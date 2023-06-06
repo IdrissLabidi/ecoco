@@ -1,0 +1,8 @@
+easy_admin:
+    entities:
+        Product:
+            class: App\Entity\Product
+            list:
+                fields: ['id', 'name', 'price', 'description']
+            form:
+                fields: ['name', 'price', 'description']

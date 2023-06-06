@@ -1,0 +1,42 @@
+body {
+    background-color: #f8f9fa;
+}
+div.row.justify-content-center{
+ margin: 0;
+}
+nav{
+    width: 100%;
+}
+.form-container {
+    max-width: 50%;
+    /* margin: 2em auto; */
+    padding: 2em;
+    background: white;
+    border-radius: 0.5em;
+    box-shadow: 0 0.5em 1em 0 rgba(0, 0, 0, 0.1);
+}
+
+.form-control {
+    height: calc(1.5em + 1rem + 2px);
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: 0.25rem;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+/* Styles spécifiques pour les petits écrans */
+@media (max-width: 600px) {
+    .form-container {
+        max-width: 80%;
+        margin: 0.25em;
+        padding: 0.5em;
+    }
+    .navbar>.container{
+        justify-content:center;
+    }
+}

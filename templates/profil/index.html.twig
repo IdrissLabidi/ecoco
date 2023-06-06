@@ -1,0 +1,135 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ProfilController!{% endblock %}
+
+{% block body %}
+    <h1>Bienvenue, {{ nom }}!</h1>
+
+    <div class="accordion" id="profilFormAccordion">
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="profilFormHeading">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#profilFormCollapse" aria-expanded="true" aria-controls="profilFormCollapse">
+                    Vos informations de profil
+                </button>
+            </h2>
+            <div id="profilFormCollapse" class="accordion-collapse collapse show" aria-labelledby="profilFormHeading" data-bs-parent="#profilFormAccordion">
+                <div class="accordion-body">
+                    <form method="post" action="{{ path('app_profil_update') }}" class="mb-3">
+                        <div class="mb-3">
+                            <label for="name" class="form-label">Nom :</label>
+                            <input type="text" id="name" name="name" value="{{ nom }}" class="form-control" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email :</label>
+                            <input type="email" id="email" name="email" value="{{ email }}" class="form-control" required>
+                        </div>
+                        <input type="submit" value="Mettre à jour" class="btn btn-primary">
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="addressFormHeading">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#addressFormCollapse" aria-expanded="false" aria-controls="addressFormCollapse">
+                    Ajouter une nouvelle adresse
+                </button>
+            </h2>
+            <div id="addressFormCollapse" class="accordion-collapse collapse" aria-labelledby="addressFormHeading" data-bs-parent="#profilFormAccordion">
+                <div class="accordion-body">
+    <form method="post" action="{{ path('app_address_add') }}" class="mb-3">
+        <div class="mb-3">
+            <label for="street" class="form-label">Rue :</label>
+            <input type="text" id="street" name="street" class="form-control" required>
+        </div>
+        
+        <div class="mb-3">
+            <label for="city" class="form-label">Ville :</label>
+            <input type="text" id="city" name="city" class="form-control" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="zipCode" class="form-label">Code postal :</label>
+            <input type="text" id="zipCode" name="zipCode" class="form-control" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="country" class="form-label">Pays :</label>
+            <input type="text" id="country" name="country" class="form-control" required>
+        </div>
+        <div class="mb-3">
+            <label for="type" class="form-label">Type :</label>
+            <select id="type" name="type" class="form-control" required>
+                <option value="">Sélectionnez le type d'adresse...</option>
+                <option value="livraison">Livraison</option>
+                <option value="facturation">Facturation</option>
+            </select>
+        </div>
+        <input type="submit" value="Ajouter" class="btn btn-primary">
+    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <h2>Vos adresses</h2>
+
+    {% for address in addresses %}
+        <div class="card mb-3">
+            <div class="card-body">
+                <h5 class="card-title">{{ address.rue }}</h5>
+                <p class="card-text">
+                    {{ address.ville }}, {{ address.codepostal }}, {{ address.pays }}<br>
+                    Type: {{ address.type }}
+                </p>
+            <div class="d-flex justify-content-end">
+                <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteAddressModal{{ address.id }}">
+                    Supprimer l'adresse
+                </button>
+            </div>
+                <div class="modal fade" id="deleteAddressModal{{ address.id }}" tabindex="-1" aria-labelledby="deleteAddressModalLabel{{ address.id }}" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="deleteAddressModalLabel{{ address.id }}">Confirmation de suppression de l'adresse</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                Êtes-vous sûr de vouloir supprimer cette adresse ?
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+                                <button type="button" class="btn btn-danger" onclick="location.href='{{ path('app_address_delete', { 'id': address.id }) }}'">Supprimer l'adresse</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+    {% else %}
+        <p>Vous n'avez pas encore ajouté d'adresse.</p>
+    {% endfor %}
+    <div class="d-flex justify-content-end">
+    <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteAccountModal">
+        Supprimer le compte
+    </button>
+</div>
+
+    <div class="modal fade" id="deleteAccountModal" tabindex="-1" aria-labelledby="deleteAccountModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="deleteAccountModalLabel">Confirmation de suppression du compte</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    Êtes-vous sûr de vouloir supprimer votre compte ? Cette action est irréversible.
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+                    <button type="button" class="btn btn-danger" onclick="location.href='{{ path('app_account_delete') }}'">Supprimer le compte</button>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

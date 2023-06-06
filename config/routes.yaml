@@ -3,3 +3,10 @@ controllers:
         path: ../src/Controller/
         namespace: App\Controller
     type: attribute
+easy_admin_bundle:
+    resource: 'App\Controller\Admin\DashboardController'
+    type: annotation
+    prefix: /admin
+
+
+
