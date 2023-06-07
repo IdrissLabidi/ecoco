@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Panier{% endblock %}
+
+{% block body %}
+    <h1>Panier</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Nom du produit</th>
+                <th>Prix</th>
+                <th>Quantité</th>
+                <th>Total</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in items %}
+                <tr>
+                    <td>{{ item.product.name }}</td>
+                    <td>{{ item.product.price / 100 }} €</td>
+                    <td>{{ item.quantity }}</td>
+                    <td>{{ item.product.price * item.quantity / 100 }} €</td>
+                    <td>
+                        <a href="{{ path('cart_remove', {'id': item.product.id}) }}" class="btn btn-danger">Supprimer</a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <div class="text-right">
+        <h2>Total : {{ total / 100 }} €</h2>
+    </div>
+
+    <div class="text-right">
+        <a href="#" class="btn btn-primary">Finaliser la commande</a>
+    </div>
+{% endblock %}

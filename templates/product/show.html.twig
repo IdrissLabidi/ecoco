@@ -17,12 +17,12 @@
                     {% set euros = price|slice(0, -2) %}
                     {% set cents = price|slice(-2) %}
                     <p class="card-text"><strong>Price: </strong>{{ euros ~ ',' ~ cents }} €</p>
-                    <form action="{{ path('app_home', {'id': product.id}) }}" method="post">
+                    <form action="{{ path('cart_add', {'id': product.id}) }}" method="post">
                         <div class="mb-3">
                             <label for="quantity" class="form-label">Quantité</label>
                             <input type="number" class="form-control" id="quantity" name="quantity" min="1" max="100" value="1">
                         </div>
-                        <button type="submit" class="btn btn-primary">Ajouté au panier</button>
+                        <button type="submit" class="btn btn-primary">Ajouter au panier</button>
                     </form>
                 </div>
             </div>
