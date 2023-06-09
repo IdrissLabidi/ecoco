@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Résultats de recherche pour "{{ search }}"{% endblock %}
+
+{% block body %}
+
+    <div class="container mt-3">
+        <h1>Résultats de "{{ search }}"</h1>
+    <div class="row">
+    {% for product in products %}
+        <div class="col-sm-4">
+            <div class="card mt-4">
+                <img src="{{ (product.image) ? "./uploads/" ~ product.image : "https://picsum.photos/200?random=" ~ random(1000) }}" class="card-img-top" alt="{{ product.name }}">
+                <div class="card-body">
+                    <h5 class="card-title">{{ product.name }}</h5>
+                    {% set price = product.price %}
+                    {% set euros = price|slice(0, -2) %}
+                    {% set cents = price|slice(-2) %}
+                    <p class="card-text"><strong>Prix: </strong>{{ euros ~ ',' ~ cents }} €</p>
+                    <a href="{{ path('product_show', {'id': product.id}) }}" class="btn btn-primary">Voir le produit</a>
+                </div>
+            </div>
+        </div>
+    {% else %}
+        <p>Aucun produit trouvé pour votre recherche.</p>
+    {% endfor %}
+    </div>
+</div>
+{% endblock %}

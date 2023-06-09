@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+        {% block stylesheets %}
+            {{ encore_entry_link_tags('bootstrap') }}
+            {# {{ encore_entry_link_tags('styles') }} #}
+            {{ encore_entry_link_tags('command') }}
+        {% endblock %}
+{% block title %}Mes commandes{% endblock %}
+
+{% block body %}
+<div class="container">
+    <h1 class="my-4 text-center text-dark">Mes commandes</h1>
+
+    <table class="table table-striped">
+        <thead class="bg-light text-dark">
+            <tr class="text-center">
+                <th>Commande ID</th>
+                <th>Status</th>
+                <th>Date de création</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for command in commands %}
+            <tr class="text-center text-dark">
+                <td>{{ command.id }}</td>
+                <td>
+                    <span class="badge text-dark badge-{{ command.status == 'Payer' ? 'success' : 'danger' }}">
+                        {{ command.status }}
+                    </span>
+                </td>
+                <td>{{ command.createdAt|date('Y-m-d H:i') }}</td>
+                <td>
+                    <a class="btn btn-primary" href="{{ path('commands_show', {id: command.id}) }}">Détails</a>
+                </td>
+            </tr>
+            {% else %}
+            <tr>
+                <td colspan="3" class="text-center">
+                    <p class="lead text-dark">Aucune commande trouvée</p>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

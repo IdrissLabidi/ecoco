@@ -1,42 +1,191 @@
 body {
-    background-color: #f8f9fa;
-}
-div.row.justify-content-center{
- margin: 0;
-}
-nav{
-    width: 100%;
-}
-.form-container {
-    max-width: 50%;
-    /* margin: 2em auto; */
-    padding: 2em;
-    background: white;
-    border-radius: 0.5em;
-    box-shadow: 0 0.5em 1em 0 rgba(0, 0, 0, 0.1);
-}
-
-.form-control {
-    height: calc(1.5em + 1rem + 2px);
-    padding: 0.5rem 1rem;
-    font-size: 1rem;
-    line-height: 1.5;
-    color: #495057;
-    background-color: #fff;
-    background-clip: padding-box;
-    border: 1px solid #ced4da;
-    border-radius: 0.25rem;
-    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-}
-
-/* Styles spécifiques pour les petits écrans */
-@media (max-width: 600px) {
+    background-color:rgb(43, 41, 41);
+    color: white;
+    }
+    
+    div.row.justify-content-center {
+    margin:0
+    }
+    
+    nav {
+    width:100%
+    }
+    
     .form-container {
-        max-width: 80%;
-        margin: 0.25em;
-        padding: 0.5em;
+    max-width:50%;
+    padding:2em;
+    background:#fff;
+    border-radius:.5em;
+    box-shadow:0 .5em 1em 0 rgba(0,0,0,0.1)
     }
-    .navbar>.container{
-        justify-content:center;
+    
+    .form-control {
+    height:calc(1.5em + 1rem + 2px);
+    padding:.5rem 1rem;
+    font-size:1rem;
+    line-height:1.5;
+    color:#495057;
+    background-color:#fff;
+    background-clip:padding-box;
+    border:1px solid #ced4da;
+    border-radius:.25rem;
+    transition:border-color .15s ease-in-out,box-shadow .15s ease-in-out
     }
-}
+    
+    @media (max-width: 600px) {
+    .form-container {
+    max-width:80%;
+    margin:.25em;
+    padding:.5em
+    }
+    
+    .navbar>.container {
+    justify-content:center
+    }
+    }
+    
+    .table {
+    width:100%;
+    margin-bottom:1rem;
+    color:#212529;
+    box-shadow:0 0 10px rgba(0,0,0,0.15);
+    background-color:#f8f9fa
+    }
+    
+    #cart-total {
+    background-color:#f8f9fa;
+    padding:1rem;
+    border-radius:5px
+    }
+    
+    .table th {
+    text-align:center;
+    padding:1rem;
+    vertical-align:top;
+    border-top:1px solid #dee2e6;
+    background-color:#007bff;
+    color:#fff
+    }
+    
+    .table td {
+    padding:1rem;
+    vertical-align:top;
+    border-top:1px solid #dee2e6
+    }
+    
+    /* Style pour le bouton de suppression */
+    .btn-danger {
+    background-color:#dee2e6;
+    border-color:#dc3545;
+    color:#dc3545;
+    transition:background-color .3s ease;
+    margin-top:.25rem
+    }
+    
+    .btn-danger:hover {
+    background-color:#c82333;
+    border-color:#bd2130
+    }
+    
+    #cart-total {
+    color: black;
+    font-size:1.5rem;
+    margin:2rem 0
+    }
+    
+    .btn-primary {
+    background-color:#007bff;
+    border-color:#007bff;
+    color:#fff;
+    transition:background-color .3s ease;
+    margin:2rem 0
+    }
+    
+    .btn-primary:hover {
+    background-color:#0069d9;
+    border-color:#0062cc
+    }
+    
+    .btn-danger,.btn-primary {
+    border-radius:15px;
+    transition:transform .3s ease
+    }
+    
+    .btn-danger:hover,.btn-primary:hover {
+    transform:scale(1.05)
+    }
+    
+    .cart-container {
+    max-width:800px
+    }
+    
+    #cart-total {
+    background-color:#e9ecef;
+    padding:1rem;
+    border-radius:5px
+    }
+    .product {
+        margin-bottom: 20px;
+        padding: 15px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        background: #f9f9f9;
+    }
+
+    .product img {
+        max-width: 100%;
+        height: auto;
+    }
+
+    .product h2 {
+        font-size: 1.5em;
+        margin-bottom: 10px;
+    }
+
+    .product p {
+        margin-bottom: 10px;
+    }
+
+    .product .price {
+        font-size: 1.2em;
+        color: #333;
+    }
+    .carousel-inner {
+        height: 500px;  /* Ajustez cette valeur selon vos besoins */
+        margin-bottom: 50px;
+    }
+    
+    .carousel-item img {
+        object-fit: contain;
+        width: 100%;
+        height: 550px;
+
+    }
+
+
+    .product .card-img-top {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+    }
+    
+    .product .card {
+        transition: transform .2s;
+    }
+    
+    .product .card:hover {
+        transform: scale(1.03);
+    }
+    
+    .product .card-title {
+        height: 48px;
+        overflow: hidden;
+    }
+
+    .form-label, .form-check-label{
+        color:black;
+    }
+
+    .container{
+        padding-top: 3%;
+    }

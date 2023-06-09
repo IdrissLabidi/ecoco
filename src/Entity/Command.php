@@ -26,7 +26,7 @@ class Command
     #[ORM\Column(length: 255)]
     private ?string $status = null;
 
-    #[ORM\OneToMany(mappedBy: 'command', targetEntity: CommandItem::class, orphanRemoval: true)]
+    #[ORM\OneToMany(mappedBy: 'command', targetEntity: CommandItem::class, cascade: ["persist"], orphanRemoval: true)]
     private Collection $commandItems;
 
     public function __construct()

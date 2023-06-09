@@ -3,7 +3,6 @@
 namespace App\Controller;
 
 use App\Entity\Product;
-use App\Form\SearchProductType;
 use App\Repository\ProductRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -12,12 +11,12 @@ use Knp\Component\Pager\PaginatorInterface;
 
 class ProductController extends AbstractController
 {
-    /**
-     * @Route("/products", name="product_list")
-     */
+    
+    #[Route("/products", name:"product_list")]
+    
     public function list(ProductRepository $productRepository, Request $request, PaginatorInterface $paginator)
     {
-        $queryBuilder = $productRepository->findProducts($request->query->get('search'));
+        $queryBuilder = $productRepository->findAll();
 
         $products = $paginator->paginate(
             $queryBuilder,
@@ -30,13 +29,26 @@ class ProductController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/product/{id}", name="product_show", methods={"GET"})
-     */
+    
+    #[Route("/product/{id}", name:"product_show", methods:"GET")]
+
     public function show(Product $product)
     {
         return $this->render('product/show.html.twig', [
             'product' => $product,
         ]);
+    }
+
+    #[Route("/products/search", name:"product_search")]
+    public function search(Request $request, ProductRepository $productRepository)
+    {
+        $search = $request->query->get('q');
+
+        $products = $productRepository->searchProduct($search);
+        return $this->render('product/search.html.twig', [
+            'products' => $products,
+            'search' => $search,
+        ]);
+
     }
 }

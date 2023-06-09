@@ -6,28 +6,37 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
+            <form class="d-flex" action="{{ path('product_search') }}" method="get">
+                <input class="form-control mr-2" type="search" placeholder="Chercher un produit" name="q" aria-label="Search">
+            </form>
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
                         <a class="nav-link" href="{{ path('product_list') }} ">Catalogue</a>
                     </li>
-                    {% if app.user %}
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ path('app_profil') }}">Profil</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ path('app_logout') }}">Déconnexion</a>
-                </li>
-            {% else %}
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ path('app_register') }}">Inscription</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ path('app_login') }}">Connexion</a>
-                </li>
-            {% endif %}
+                {% if app.user %}
                     <li class="nav-item">
-                        <a class="nav-link" href=" # ">Panier</a>
+                        <a class="nav-link" href="{{ path('app_profil') }}">Profil</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ path('app_logout') }}">Déconnexion</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{path('cart')}} ">Panier</a>
+                    </li>
+                {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ path('app_register') }}">Inscription</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ path('app_login') }}">Connexion</a>
+                    </li>
+                {% endif %}
+
+                {% if is_granted('ROLE_ADMIN') %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ path('admin') }}">Admin</a>
+                    </li>
+                {% endif %}
                 </ul>
             </div>
         </div>

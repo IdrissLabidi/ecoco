@@ -18,7 +18,7 @@ class Cart
     #[ORM\OneToOne(inversedBy: 'cart', cascade: ['persist', 'remove'])]
     private ?User $user = null;
 
-    #[ORM\OneToMany(mappedBy: 'cart', targetEntity: CartItem::class)]
+    #[ORM\OneToMany(mappedBy: 'cart', targetEntity: CartItem::class, cascade:['persist', 'remove'])]
     private Collection $cartItems;
 
     public function __construct()

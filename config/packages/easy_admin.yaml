@@ -1,5 +1,12 @@
 easy_admin:
     entities:
+        Command:
+          class: App\Entity\Command
+          list:
+            - { name: 'show' }
+            - { name: 'delete' }
+          show:
+            actions: ['delete']
         Product:
             class: App\Entity\Product
             list:

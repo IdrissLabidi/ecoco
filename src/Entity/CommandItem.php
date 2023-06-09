@@ -19,7 +19,7 @@ class CommandItem
 
     #[ORM\ManyToOne(inversedBy: 'commandItems')]
     #[ORM\JoinColumn(nullable: false)]
-    private ?product $product = null;
+    private ?Product $product = null;
 
     #[ORM\Column]
     private ?int $quantity = null;
@@ -41,12 +41,12 @@ class CommandItem
         return $this;
     }
 
-    public function getProduct(): ?product
+    public function getProduct(): ?Product
     {
         return $this->product;
     }
 
-    public function setProduct(?product $product): self
+    public function setProduct(?Product $product): self
     {
         $this->product = $product;
 

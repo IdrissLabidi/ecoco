@@ -8,7 +8,7 @@
         {% for product in products %}
             <div class="col-sm-4">
                 <div class="card mt-4">
-                    <img src=" ./uploads/{{ product.image }}" class="card-img-top" alt="{{ product.name }}">
+                    <img src="{{ (product.image) ? "./uploads/" ~ product.image : "https://picsum.photos/200?random=" ~ random(1000) }}" class="card-img-top" alt="{{ product.name }}">
                     <div class="card-body">
                         <h5 class="card-title">{{ product.name }}</h5>
                         {% set price = product.price %}
@@ -21,7 +21,7 @@
             </div>
         {% else %}
             <div class="col-sm-12">
-                <p>No products found.</p>
+                <p>Aucun produit trouvé.</p>
             </div>
         {% endfor %}
     </div>

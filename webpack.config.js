@@ -21,8 +21,11 @@ Encore
      * and one CSS file (e.g. app.css) if your JavaScript imports CSS.
      */
     .addEntry('app', './assets/app.js')
+    .addEntry('cart', './assets/cart.js')
+    .addEntry('checkout', './assets/stripe.js')
     .addEntry('bootstrap', './node_modules/bootstrap/dist/css/bootstrap.min.css')
     .addEntry('styles', './assets/styles/app.css')
+    .addEntry('command', './assets/styles/command.css')
 
     // When enabled, Webpack "splits" your files into smaller pieces for greater optimization.
     .splitEntryChunks()

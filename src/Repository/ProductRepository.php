@@ -41,6 +41,15 @@ class ProductRepository extends ServiceEntityRepository
         }
     }
 
+    public function searchProduct(string $search): array
+    {
+        return $this->createQueryBuilder('p')
+            ->where('p.name LIKE :search OR p.description LIKE :search')
+            ->setParameter('search', '%' . $search . '%')
+            ->getQuery()
+            ->getResult();
+    }
+
 //    /**
 //     * @return Product[] Returns an array of Product objects
 //     */
@@ -55,19 +64,6 @@ class ProductRepository extends ServiceEntityRepository
 //            ->getResult()
 //        ;
 //    }
-
-   public function findProducts(?string $term): ORMQueryBuilder
-   {
-       $qb = $this->createQueryBuilder('p')
-           ->orderBy('p.id', 'ASC')
-       ;
-       if($term){
-            $qb->andWhere('p.name LIKE :term')
-                ->setParameter('term', '%' . $term . '%');
-       }
-       return $qb;
-   }
-
 
 //    public function findOneBySomeField($value): ?Product
 //    {

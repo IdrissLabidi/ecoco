@@ -1,10 +1,12 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello ProfilController!{% endblock %}
+{% block title %}Profil!{% endblock %}
 
 {% block body %}
+    
+<div class="cart-container mx-auto">
     <h1>Bienvenue, {{ nom }}!</h1>
-
+    <a href="{{ path('commands') }}" class="btn btn-primary">Voir vos commandes</a>
     <div class="accordion" id="profilFormAccordion">
         <div class="accordion-item">
             <h2 class="accordion-header" id="profilFormHeading">
@@ -132,4 +134,5 @@
             </div>
         </div>
     </div>
+</div>
 {% endblock %}

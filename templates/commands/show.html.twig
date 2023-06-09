@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Command Details{% endblock %}
+
+{% block body %}
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header">
+                    <h1>Detail de votre commande</h1>
+                </div>
+                <div class="card-body">
+                    <p><strong>Commandé le :</strong> {{ command.createdAt|date('Y-m-d H:i') }}</p>
+                    <p><strong>Status :</strong> {{ command.status }}</p>
+
+                    <h2>Items:</h2>
+                    
+                    <ul class="list-group">
+                        {% for commandItem in command.commandItems %}
+                        <li class="list-group-item">
+                            <strong>Produit :</strong> {{ commandItem.product.name }} <br>
+                            <strong>Quantité :</strong> {{ commandItem.quantity }}
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

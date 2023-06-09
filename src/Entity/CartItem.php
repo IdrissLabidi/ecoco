@@ -17,7 +17,7 @@ class CartItem
     private ?Product $product = null;
 
     #[ORM\Column]
-    private ?int $quantité = null;
+    private ?int $Quantity = null;
 
     #[ORM\ManyToOne(inversedBy: 'cartItems')]
     private ?Cart $cart = null;
@@ -39,14 +39,14 @@ class CartItem
         return $this;
     }
 
-    public function getQuantité(): ?int
+    public function getQuantity(): ?int
     {
-        return $this->quantité;
+        return $this->Quantity;
     }
 
-    public function setQuantité(int $quantité): self
+    public function setQuantity(int $Quantity): self
     {
-        $this->quantité = $quantité;
+        $this->Quantity = $Quantity;
 
         return $this;
     }

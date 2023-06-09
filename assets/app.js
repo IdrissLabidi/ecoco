@@ -9,3 +9,6 @@
 
 import 'bootstrap';
 import './styles/app.css';
+import './styles/command.css';
+const $ = require('jquery');
+global.$ = global.jQuery = $;
