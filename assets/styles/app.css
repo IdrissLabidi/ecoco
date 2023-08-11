@@ -186,11 +186,16 @@ h1 {
 
 table {
     background: #fff;
-    border-radius: 5px;
+    /* border-radius: 15px; */
     box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.03);
     padding: 20px;
 }
-
+.table{
+    border-radius: 15%;
+}
+.table th{
+    background-color: #1c2630;
+}
 thead th {
     font-weight: bold;
     color: #5a5a5a;
@@ -235,12 +240,21 @@ tbody tr td {
 }
 .navbar {
     position: relative;
-    top: 0;
-    transition: top 0.1s;
     z-index: 1;
 }
-.fixed-navbar {
+.navbar-container {
+    height: 70px;
+}
+.fixed-position {
     position: fixed;
     top: 0;
     width: 100%;
+}
+
+.product-img{
+    width: 320px;
+}
+
+.pagination{
+    justify-content: center;
 }

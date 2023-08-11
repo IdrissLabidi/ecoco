@@ -15,13 +15,13 @@ global.$ = global.jQuery = $;
 
 window.addEventListener("scroll", function() {
     var nav = document.querySelector("nav.navbar");
+    var container = document.querySelector(".navbar-container");
+    var offsetPosition = container.offsetHeight;
     if (window.scrollY > 50) {
-        nav.style.top = window.scrollY + "px";  
         if (!nav.classList.contains("fixed-position")) {
             nav.classList.add("fixed-position");
         }
     } else {
-        nav.style.top = "0px";
         if (nav.classList.contains("fixed-position")) {
             nav.classList.remove("fixed-position");
         }
