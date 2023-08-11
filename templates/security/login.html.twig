@@ -3,38 +3,37 @@
 {% block title %}Connexion{% endblock %}
 
 {% block body %}
-<div class="container">
-    <div class="row justify-content-center">
-            <div class="col-md-6 form-container">
-                {% if error %}
-                    <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
-                {% endif %}
+<section class="container">
+            <header class="text-center">
+                <h1 class="h3 mb-3 font-weight-normal">Connexion</h1>
+            </header>
+    <article class="row justify-content-center">
+        <form class="col-md-6 form-container" method="post">
+            {% if error %}
+                <aside class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</aside>
+            {% endif %}
+            
 
-                <h1 class="h3 mb-3 font-weight-normal text-center">Connexion</h1>
-                <form method="post">
-                    <div class="mb-3">
-                        <label for="inputEmail" class="form-label">Email</label>
-                        <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" autocomplete="email" required autofocus>
-                    </div>
-
-                    <div class="mb-3">
-                        <label for="inputPassword" class="form-label">Mot de passe</label>
-                        <input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" required>
-                    </div>
-
-                    <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
-
-                        <div class="mb-3 form-check">
-                            <input type="checkbox" name="_remember_me" class="form-check-input" id="rememberMeCheckbox">
-                            <label class="form-check-label" for="rememberMeCheckbox">Remember me</label>
-                        </div>
-
-
-                    <div class="d-grid gap-2">
-                        <button class="btn btn-lg btn-primary" type="submit">Se connecter</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
+            
+            <fieldset class="mb-3">
+                <label for="inputEmail" class="form-label">Email</label>
+                <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" autocomplete="email" required autofocus>
+            </fieldset>
+            
+            <fieldset class="mb-3">
+                <label for="inputPassword" class="form-label">Mot de passe</label>
+                <input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" required>
+            </fieldset>
+            
+            <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+            
+            <fieldset class="mb-3 form-check">
+                <input type="checkbox" name="_remember_me" class="form-check-input" id="rememberMeCheckbox">
+                <label class="form-check-label" for="rememberMeCheckbox">Remember me</label>
+            </fieldset>
+            
+            <button class="btn btn-lg btn-primary d-grid gap-2" type="submit">Se connecter</button>
+        </form>
+    </article>
+</section>
 {% endblock %}

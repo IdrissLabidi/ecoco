@@ -1,13 +1,15 @@
 {% extends 'base.html.twig' %}
-        {% block stylesheets %}
-            {{ encore_entry_link_tags('bootstrap') }}
-            {# {{ encore_entry_link_tags('styles') }} #}
-            {{ encore_entry_link_tags('command') }}
-        {% endblock %}
+
+{% block stylesheets %}
+    {{ encore_entry_link_tags('bootstrap') }}
+    {# {{ encore_entry_link_tags('styles') }} #}
+    {{ encore_entry_link_tags('command') }}
+{% endblock %}
+
 {% block title %}Mes commandes{% endblock %}
 
 {% block body %}
-<div class="container">
+<section class="container">
     <h1 class="my-4 text-center text-dark">Mes commandes</h1>
 
     <table class="table table-striped">
@@ -42,5 +44,5 @@
             {% endfor %}
         </tbody>
     </table>
-</div>
+</section>
 {% endblock %}

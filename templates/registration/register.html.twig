@@ -4,40 +4,36 @@
 
 {% block body %}
     
-<div class="container">  
-<h1 class="row justify-content-center">Inscription</h1>
-    <div class="row justify-content-center">
-        <div class="col-md-6 form-container">
-            {{ form_start(registrationForm, {'attr': {'class': 'form'}}) }}
-                <div class="mb-3">
-                    {{ form_label(registrationForm.name, 'Nom', {'label_attr': {'class': 'form-label'}}) }}
-                    {{ form_widget(registrationForm.name, {'attr': {'class': 'form-control'}}) }}
-                    {{ form_errors(registrationForm.name) }}
-                </div>
-                
-                <div class="mb-3">
-                    {{ form_label(registrationForm.email, 'Email', {'label_attr': {'class': 'form-label'}}) }}
-                    {{ form_widget(registrationForm.email, {'attr': {'class': 'form-control'}}) }}
-                    {{ form_errors(registrationForm.email) }}
-                </div>
-
-                <div class="mb-3">
-                    {{ form_label(registrationForm.plainPassword, 'Mot de passe', {'label_attr': {'class': 'form-label'}}) }}
-                    {{ form_widget(registrationForm.plainPassword, {'attr': {'class': 'form-control'}}) }}
-                    {{ form_errors(registrationForm.plainPassword) }}
-                </div>
-
-                <div class="mb-3">
-                    {{ form_label(registrationForm.confirmPassword, 'Confirmer le mot de passe', {'label_attr': {'class': 'form-label'}}) }}
-                    {{ form_widget(registrationForm.confirmPassword, {'attr': {'class': 'form-control'}}) }}
-                    {{ form_errors(registrationForm.confirmPassword) }}
-                </div>
-
-                <div class="d-grid gap-2">
-                    <button type="submit" class="btn btn-primary">S'inscrire</button>
-                </div>
+<section class="container">
+    <header class="row justify-content-center">
+        <h1 class="col-md-6 text-center">Inscription</h1>
+    </header>
+    <article class="row justify-content-center">
+        <form class="col-md-6 form-container" 
+              {{ form_start(registrationForm, {'attr': {'class': 'form'}}) }}
+            <fieldset class="mb-3">
+                <label for="{{ registrationForm.name.vars.id }}" class="form-label">Nom</label>
+                {{ form_widget(registrationForm.name, {'attr': {'class': 'form-control'}}) }}
+                {{ form_errors(registrationForm.name) }}
+            </fieldset>
+            <fieldset class="mb-3">
+                <label for="{{ registrationForm.email.vars.id }}" class="form-label">Email</label>
+                {{ form_widget(registrationForm.email, {'attr': {'class': 'form-control'}}) }}
+                {{ form_errors(registrationForm.email) }}
+            </fieldset>
+            <fieldset class="mb-3">
+                <label for="{{ registrationForm.plainPassword.vars.id }}" class="form-label">Mot de passe</label>
+                {{ form_widget(registrationForm.plainPassword, {'attr': {'class': 'form-control'}}) }}
+                {{ form_errors(registrationForm.plainPassword) }}
+            </fieldset>
+            <fieldset class="mb-3">
+                <label for="{{ registrationForm.confirmPassword.vars.id }}" class="form-label">Confirmer le mot de passe</label>
+                {{ form_widget(registrationForm.confirmPassword, {'attr': {'class': 'form-control'}}) }}
+                {{ form_errors(registrationForm.confirmPassword) }}
+            </fieldset>
+            <button type="submit" class="btn btn-primary d-grid gap-2">S'inscrire</button>
             {{ form_end(registrationForm) }}
-        </div>
-    </div>
-</div>
+        </form>
+    </article>
+</section>
 {% endblock %}

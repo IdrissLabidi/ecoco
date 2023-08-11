@@ -4,7 +4,7 @@
 
 {% block body %}
     <h1 class="text-center">Panier</h1>
-    <div class="cart-container mx-auto">
+    <section class="cart-container mx-auto">
         <table class="table table-striped">
             <thead>
                 <tr>
@@ -21,9 +21,9 @@
                         <td>{{ item.product.name }}</td>
                         <td>{{ item.product.price / 100 }} €</td>
                         <td>
-                        <form id="update-cart-{{ item.product.id }}" action="{{ path('cart_update', {'id': item.product.id}) }}" method="post">
-                            <input id="quantity-{{ item.product.id }}" type="number" name="quantity" min="1" value="{{ item.quantity }}">
-                        </form>
+                            <form id="update-cart-{{ item.product.id }}" action="{{ path('cart_update', {'id': item.product.id}) }}" method="post">
+                                <input id="quantity-{{ item.product.id }}" type="number" name="quantity" min="1" value="{{ item.quantity }}">
+                            </form>
                         </td>
                         <td id="product-total{{item.product.id}}">{{ item.product.price * item.quantity / 100 }} €</td>
                         <td>
@@ -36,13 +36,13 @@
         <div class="text-right">
             <h2 id="cart-total">Total : {{ total / 100 }} €</h2>
         </div>
-    </div>
+    </section>
 
-    <div class="d-flex justify-content-center">
+    <section class="d-flex justify-content-center">
         <a href="{{path('checkout')}}" class="btn btn-primary">Finaliser la commande</a>
-    </div>
+    </section>
 
     {% block javascripts %}
-    {{ encore_entry_script_tags('cart') }}
-{% endblock %}
+        {{ encore_entry_script_tags('cart') }}
+    {% endblock %}
 {% endblock %}
