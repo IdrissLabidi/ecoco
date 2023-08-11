@@ -10,7 +10,7 @@ div.row.justify-content-center {
 nav {
     width: 100%;
 }
-
+/* formulaire connexion / inscription */
 .form-container {
     max-width: 50%;
     padding: 2em;
@@ -40,7 +40,10 @@ nav {
     box-shadow: none;
     border-bottom: 3px solid #007bff;
 }
+/************************************************************/
 
+
+/*Panier*/
 .table {
     width: 100%;
     margin-bottom: 1rem;
@@ -63,7 +66,7 @@ nav {
     padding: 1rem;
     vertical-align: top;
     border-top: 1px solid #dee2e6;
-    background-color: #007bff;
+    background-color: #1c2630 ;
     color: #fff;
 }
 
@@ -72,7 +75,21 @@ nav {
     vertical-align: top;
     border-top: 1px solid #dee2e6;
 }
+thead th {
+    font-weight: bold;
+    color: #5a5a5a;
+}
 
+tbody tr:nth-child(even) {
+    background: #f5f5f5;
+}
+
+tbody tr td {
+    padding: 15px 0;
+}
+/************************************************************/
+
+/* Changement bouton bootstrap*/
 .btn-danger, .btn-primary {
     border-radius: 15px;
     transition: transform .3s ease, background-color .3s ease;
@@ -106,6 +123,9 @@ nav {
     transform: scale(1.05);
 }
 
+/************************************************************/
+
+/*Card catalogue/homepage*/
 .cart-container {
     max-width: 800px;
 }
@@ -149,8 +169,9 @@ nav {
 .card-body , .card-text ,.card a , h5 .card-title{
     color: #fff;
 }
+
 .carousel-inner {
-    height: 500px;  /* Adjust this value according to your needs */
+    height: 500px; 
     margin-bottom: 50px;
 }
 
@@ -174,9 +195,6 @@ nav {
     transform: scale(1.03);
 }
 
-.product .card-title {
-    height: 44px;
-}
 
 
 
@@ -184,30 +202,7 @@ h1 {
     font-size: 2.5rem;
 }
 
-table {
-    background: #fff;
-    /* border-radius: 15px; */
-    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.03);
-    padding: 20px;
-}
-.table{
-    border-radius: 15%;
-}
-.table th{
-    background-color: #1c2630;
-}
-thead th {
-    font-weight: bold;
-    color: #5a5a5a;
-}
 
-tbody tr:nth-child(even) {
-    background: #f5f5f5;
-}
-
-tbody tr td {
-    padding: 15px 0;
-}
 
 .badge-success {
     background: #59c878;
@@ -229,6 +224,16 @@ tbody tr td {
 
     .navbar>.container {
         justify-content: center;
+    }
+    .product {
+        padding: 0 0;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        background: #f9f9f9;
+        width: 50%;
+    }
+    .pagination{
+        width: 350px;
     }
 }
 

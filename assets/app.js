@@ -9,14 +9,11 @@
 
 import 'bootstrap';
 import './styles/app.css';
-import './styles/command.css';
 const $ = require('jquery');
 global.$ = global.jQuery = $;
 
 window.addEventListener("scroll", function() {
     var nav = document.querySelector("nav.navbar");
-    var container = document.querySelector(".navbar-container");
-    var offsetPosition = container.offsetHeight;
     if (window.scrollY > 50) {
         if (!nav.classList.contains("fixed-position")) {
             nav.classList.add("fixed-position");

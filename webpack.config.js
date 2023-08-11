@@ -25,7 +25,6 @@ Encore
     .addEntry('checkout', './assets/stripe.js')
     .addEntry('bootstrap', './node_modules/bootstrap/dist/css/bootstrap.min.css')
     .addEntry('styles', './assets/styles/app.css')
-    .addEntry('command', './assets/styles/command.css')
 
     // When enabled, Webpack "splits" your files into smaller pieces for greater optimization.
     .splitEntryChunks()
