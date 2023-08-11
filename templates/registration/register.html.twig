@@ -9,7 +9,7 @@
         <h1 class="col-md-6 text-center">Inscription</h1>
     </header>
     <article class="row justify-content-center">
-        <form class="col-md-6 form-container" 
+        <form class="col-md-6 form-container" >
               {{ form_start(registrationForm, {'attr': {'class': 'form'}}) }}
             <fieldset class="mb-3">
                 <label for="{{ registrationForm.name.vars.id }}" class="form-label">Nom</label>
@@ -37,3 +37,82 @@
     </article>
 </section>
 {% endblock %}
+
+        {% block javascripts %}
+        <script>
+document.addEventListener('DOMContentLoaded', function() {
+    let form = document.querySelector('.form-container');
+    
+    if (form) {
+        form.addEventListener('submit', function(event) {
+            let hasErrors = false;
+            
+            let name = form.querySelector('[id="{{ registrationForm.name.vars.id }}"]');
+            let email = form.querySelector('[id="{{ registrationForm.email.vars.id }}"]');
+            let password = form.querySelector('[id="{{ registrationForm.plainPassword.vars.id }}"]');
+            let confirmPassword = form.querySelector('[id="{{ registrationForm.confirmPassword.vars.id }}"]');
+            
+            // Validation pour le champ "Nom"
+            removeErrorMessage(name);
+            if (name && name.value.trim() === '') {
+                addErrorMessage(name, "Le nom est obligatoire.");
+                hasErrors = true;
+            }
+
+            // Validation pour le champ "Email"
+            removeErrorMessage(email);
+            if (email && !validateEmail(email.value)) {
+                addErrorMessage(email, "L'email est invalide.");
+                hasErrors = true;
+            }
+
+            // Validation pour le champ "Mot de passe"
+            removeErrorMessage(password);
+            if (password && password.value.trim() === '') {
+                addErrorMessage(password, "Le mot de passe est obligatoire.");
+                hasErrors = true;
+            }
+
+            // Validation pour le champ "Confirmer le mot de passe"
+            removeErrorMessage(confirmPassword);
+            if (confirmPassword && confirmPassword.value !== password.value) {
+                addErrorMessage(confirmPassword, "Les mots de passe ne correspondent pas.");
+                hasErrors = true;
+            }
+
+            if (hasErrors) {
+                event.preventDefault();
+            }
+        });
+    }
+});
+
+// Fonction pour ajouter un message d'erreur sous un champ de formulaire
+function addErrorMessage(inputElement, message) {
+    if (!inputElement) return;
+    // Créer un nouvel élément pour le message d'erreur
+    const errorMessageElement = document.createElement('div');
+    errorMessageElement.classList.add('js-error-message', 'text-danger');
+    errorMessageElement.innerText = message;
+
+    // Insérer le message d'erreur après le champ de formulaire
+    inputElement.parentElement.appendChild(errorMessageElement);
+}
+
+// Fonction pour supprimer un message d'erreur existant
+function removeErrorMessage(inputElement) {
+    if (!inputElement) return;
+    const previousErrorMessage = inputElement.parentElement.querySelector('.js-error-message');
+    if (previousErrorMessage) {
+        previousErrorMessage.remove();
+    }
+}
+
+// Fonction de validation d'email
+function validateEmail(email) {
+    let re = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+    return re.test(String(email).toLowerCase());
+}
+
+</script>
+        {% endblock %}

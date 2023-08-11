@@ -14,9 +14,11 @@
         <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button></section>
     <article class="carousel-inner">
         {% for index, product in products %}
-        <article class="carousel-item {% if index == 0 %}active{% endif %}">
-            <img src="./img/carousel_{{ index + 1 }}.avif" class="d-block w-100" alt="...">
-        </article>
+            {% if loop.index <= 3 %}
+            <article class="carousel-item {% if index == 0 %}active{% endif %}">
+                <img src="./img/carousel_{{ index + 1 }}.avif" class="d-block w-100" alt="...">
+            </article>
+            {% endif %}
         {% endfor %}
     </article>
     <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-bs-slide="prev">
@@ -32,29 +34,35 @@
 <section class="container">
     <article class="row">
         {% for product in products %}
-        <section class="col-lg-4 col-md-6 mb-4 product">
+        <section class="col-lg-4 col-md-6 mb-4 mr-3 product">
             <article class="card h-100 shadow">
                 <a href="{{ path('product_show', { 'id': product.id }) }}">
                     <img class="card-img-top img-fluid" src="{{ (product.image) ? "./uploads/" ~ product.image : "https://picsum.photos/200?random=" ~ random(1000) }}" alt="{{ product.name }}">
                 </a>
                 <section class="card-body">
                     <h2 class="card-title">
-                        <a href="{{ path('product_show', { 'id': product.id }) }}" class="text-dark text-decoration-none">{{ product.name }}</a>
+                        <a href="{{ path('product_show', { 'id': product.id }) }}" class="text-decoration-none">{{ product.name }}</a>
                     </h2>
                     {% set price = product.price %}
                     {% set euros = price|slice(0, -2) %}
                     {% set cents = price|slice(-2) %}
                     <p class="card-text"><strong>Prix: </strong>{{ euros ~ ',' ~ cents }} €</p>
-                    <p class="card-text text-muted">{{ product.description }}</p>
+                    <p class="card-text">{{ product.description }}</p>
                 </section>
                 <footer class="card-footer bg-transparent border-top-0 text-right">
                     <a href="{{ path('product_show', { 'id': product.id }) }}" class="btn btn-primary">Voir détails</a>
                 </footer>
             </article>
         </section>
+        {% if loop.index0 is not divisible by 3 and loop.last %}
+            </article>
+            <article class="row">
+        {% endif %}
         {% else %}
         <p class="text-center">Aucun produit trouvé.</p>
         {% endfor %}
     </article>
 </section>
+
+
 {% endblock %}

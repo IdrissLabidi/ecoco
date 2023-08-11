@@ -7,7 +7,7 @@
     <article class="card">
         <section class="row g-0">
             <article class="col-md-4">
-                <img src="/uploads/{{ product.image }}" class="img-fluid rounded-start" alt="{{ product.name }}">
+                <img src="{{ (product.image) ? "./uploads/" ~ product.image : "https://picsum.photos/200?random=" ~ random(1000) }}" class="img-fluid rounded-start" alt="{{ product.name }}">
             </article>
             <article class="col-md-8">
                 <section class="card-body">
